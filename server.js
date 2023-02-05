@@ -40,6 +40,8 @@ function addNewData(req,res){
     projectData['temp'] = req.body.temp ; 
     projectData['date'] = req.body.date ;
     projectData['feelings'] = req.body.feelings ;
+    projectData['City'] = req.body.city ;
+   
     res.send(projectData);
 }
 

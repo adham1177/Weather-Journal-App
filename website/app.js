@@ -33,7 +33,7 @@ const GetDataFromApi = async(baseUrl,zip,apiKey) => {
     try {
         // data equals to the result of fetch function
         const data = await res.json();
-        postData('/addNewData' , {temp:data.main.temp , date: newDate , feelings: document.getElementById('feelings').value})
+        postData('/addNewData' , {temp:data.main.temp , date: newDate , feelings: document.getElementById('feelings').value , city:data.name})
         console.log(data)
         
         
@@ -86,9 +86,11 @@ const retrieveData = async () =>{
  const allData = await request.json()
  console.log(allData)
  // Write updated data to DOM elements
+ document.getElementById('City').innerHTML = "CityName: " +  allData.City;
  document.getElementById('temp').innerHTML = "Temperature: " +  Math.round(allData.temp)+ ' degrees';
  document.getElementById('content').innerHTML = "You are feeling " + allData.feelings;
  document.getElementById('date').innerHTML ="Date: " + allData.date;
+ 
  }
  catch(error) {
    console.log("error", error);
